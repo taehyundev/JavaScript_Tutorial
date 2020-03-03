@@ -2,6 +2,9 @@
 
 > begin : 2020-03-03 ~ 
 
+#
+> 파이썬과 비슷
+
 ## [ Contents ]
 
 * Number&String
@@ -11,6 +14,13 @@
 * Compare(if)
 
 * Loop(While, for)
+
+* Function
+
+* Array(리스트)
+
+* Object (객체,딕셔너리)
+    > this에 대해서 좀 더 공부
 
 ## Goal(소소한 나의 목표)
 ```
