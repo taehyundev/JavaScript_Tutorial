@@ -29,10 +29,13 @@ var grades = {
     },
     'show' : 
     function(){
+        // list안에 있는 key 요소를 name에 넣음
         for(var name in this.list){
             document.write(name+':'+this.list[name]+"<br />");
         }
     }
 };
-grades.show();
-document.write(grades.list);
+// key : values 인데 key: 함수로 할 수도 있다.
+//show를 불러오면 거기에 맞는 함수가 호출된다.
+
+grades.show()//grades['show']();
