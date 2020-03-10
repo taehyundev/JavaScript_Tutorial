@@ -2,6 +2,19 @@ var express = require('express')
 //require로 express에 관련된 함수를 가져옴
 var app = express()
 var bodyParser = require('body-parser');
+var mysql = require('mysql')
+
+//DB 기본 접속 
+
+var connection = mysql.createConnection({
+    host : 'localhost',
+    port : 3306,
+    user : 'root',
+    password : 'root',
+    database : 'jsman'
+})
+
+connection.connect()
 
 //아래라인이 모두 실행되고 나서 listen 진행
 //아래는 비동기적
@@ -43,9 +56,24 @@ app.post('/email_post', function(req,res){ //req 요청 객체 //res 응답객�
 })
 
 app.post('/ajax_send_email', function(req,res){
-    console.log(req.body.email);
-    var responseData = {'result' : 'ok', 'email': req.body.email};
-    res.json(responseData);
+    var email = req.body.email;
+    var responseData = {};
+
+    //Query를 날림
+    var query = connection.query('select name from user where email="'+email+'"', function(err,rows){
+        if(err) throw err;
+        if(rows[0]){
+            //console.log(rows[0].name); // 결과값 확인 가능 
+            responseData.result = "ok";
+            responseData.name = rows[0].name;
+        }else{
+            responseData.result = "none";
+            responseData.name = "";
+        }
+        res.json(responseData);
+    })
+    //console.log(req.body.email);
+    //var responseData = {'result' : 'ok', 'email': req.body.email};
 })
 
 /*

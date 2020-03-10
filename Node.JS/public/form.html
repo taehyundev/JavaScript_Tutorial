@@ -17,7 +17,7 @@
         <script>
             document.querySelector('.ajaxsend').addEventListener('click', function(){
                 var inputData = document.forms[0].elements[0].value;
-                sendAjax("http://127.0.0.1:3000/ajax_send_email", inputData)
+                sendAjax("http://localhost:3000/ajax_send_email", inputData)
             })
             function sendAjax(url, data){
                 var data = {'email' : data};
@@ -28,10 +28,12 @@
                 xhr.send(data);
                 xhr.addEventListener('load',function(){
                 var result = JSON.parse(xhr.responseText);
-                if(result.result != "ok")return;
-
-                document.querySelector(".result").innerHTML = result.email;
-                });
+                var resultDiv =document.querySelector(".result");
+  
+                if(result.result !== "ok")resultDiv.innerHTML = "your email is NOT Found";
+                else resultDiv.innerHTML = `your name : ${result.name}`;
+  
+              });
             }
         </script>
 </body>
