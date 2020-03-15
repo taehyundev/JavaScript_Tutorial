@@ -4,6 +4,7 @@ var router = express.Router();
 var path  = require('path')
 var main = require('./main/main')
 var email = require('./email/email')
+var join = require('./join/index')
 
 //root url
 router.get('/', function(req,res){
@@ -11,8 +12,9 @@ router.get('/', function(req,res){
       res.sendfile(path.join(__dirname, "../public/main.html"));
       //__dirname 식별자를 사용하면 지금 경로를 불러올수있다.
       // /public/main.html만 치면 main 파일을 불러올수있다.
-});
+    });
 router.use('/main', main)
 router.use('/email', email)
+router.use('/join', join);
 module.exports = router;
 
