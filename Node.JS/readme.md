@@ -4,9 +4,9 @@ POST / GET
 
 게시판
 
-콜백함수
-
 QueryString
+
+passport
 
 
 
