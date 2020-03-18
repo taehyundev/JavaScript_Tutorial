@@ -3,7 +3,11 @@ var express = require('express')
 var app = express()
 var bodyParser = require('body-parser');
 //아래 부분은 라우터
-var index = require('./router/index')
+var router = require('./router/index')
+var passport = require('passport')
+var LocalStrategy = require('passport-local')
+var session = require('express-session');
+var flash = require('connect-flash');
 
 app.listen(3000, function(){
     console.log("start! express server");
@@ -19,7 +23,7 @@ app.use(bodyParser.urlencoded({extended:true})) //그냥 post로
 app.set('view engine', 'ejs')
 // view engine은 ejs를 쓰겠다라고 설치 후 셋팅
 
-app.use(index)
+app.use(router)
 
 
 /*

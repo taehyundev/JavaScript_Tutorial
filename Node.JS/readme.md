@@ -4,9 +4,9 @@ POST / GET
 
 게시판
 
-QueryString
+콜백함수
 
-passport
+QueryString
 
 
 

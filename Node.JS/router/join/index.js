@@ -19,9 +19,11 @@ connection.connect()
 //GET POST 의 URL이 같아도 다르게 처리
 router.get('/', function(req,res){ //req 요청 객체 //res 응답객체
     console.log('get join url');
-    res.sendFile(path.join(__dirname, '../../public/join.html'));
+    //res.sendFile(path.join(__dirname, '../../public/join.html'));
+    res.render('join.ejs');    
 })
 
+/* 전통적인 처리 방식   
 router.post('/', function(req,res){
     var body = req.body;
     var email = body.email;
@@ -36,5 +38,12 @@ router.post('/', function(req,res){
         else res.render('welcome.ejs', {'name':name,'id':rows.insertId});    
     })
 })
+*/
+
+
+//passport를 위해서 필요한 모듈
+/*
+ npm install passport passport-local express-session connect-flash --save-dev
+*/
 
 module.exports = router;
